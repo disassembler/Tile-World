@@ -19,7 +19,11 @@ else
 endif
 
 QTMODULES := Core Gui Xml
-QTMODULES := $(addprefix -lQt,$(QTMODULES))
+ifeq ($(OSTYPE),Darwin)
+	QTMODULES := -F /usr/local/Cellar/qt/4.8.6/Frameworks/ $(addprefix -framework Qt,$(QTMODULES))
+else
+	QTMODULES := $(addprefix -lQt,$(QTMODULES))
+endif
 ifeq ($(OSTYPE),windows)
 	QTMODULES := $(addsuffix 4,$(QTMODULES))
 endif
