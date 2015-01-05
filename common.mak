@@ -32,6 +32,7 @@ else
 	EXE  =
 	RM_F = rm -f
 	CP   = cp
+	COMMONFLAGS = -Wall -I.
 endif
 
 
